@@ -1,0 +1,75 @@
+<div class="vudash-status">
+  <div class="value" ref:value>
+    {{ value }}
+  </div>
+  <div class="label">
+    {{ config.description }}
+  </div>
+</div>
+
+<style>
+.vudash-status > .label, .vudash-status > .value {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.value {
+  width: 90%;
+}
+
+.label {
+  position: absolute;
+  bottom: 20px;
+  font-size: 16px;
+}
+</style>
+
+<script>
+'use strict';
+
+import FitText from 'fit-text';
+
+const options = {
+  axisX: {
+    showLabel: false,
+    showGrid: false
+  },
+  axisY: {
+    showLabel: false,
+    showGrid: false
+  },
+  showPoint: false,
+  showArea: true,
+  fullWidth: true,
+  width: '100%',
+  chartPadding: { 
+    left: -40,
+    right: 0,
+    bottom: -40
+  }
+};
+
+
+
+export default {
+  data () {
+    return {
+      value: '-'
+    };
+  },
+
+  oncreate () {
+    const config = this.get('config');
+    new FitText(this.refs.value, { fontRatio: config.font_ratio || 6 });
+  },
+
+  methods: {
+    update ({ data, meta }) {
+      const updates = { value: data.value.value }
+      this.refs.value.style.color = data.value.color;
+      this.set(updates);
+    }
+  }
+};
+</script>

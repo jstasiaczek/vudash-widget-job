@@ -1,0 +1,21 @@
+{
+  "name": "vudash-widget-job",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Vudash widget displaying job status for jenkins and concourse",
+  "author": "Jarosław Stasiaczek",
+  "main": "./src/server",
+  "scripts": {
+    "link": "npm link",
+    "test": "jest"
+  },
+  "dependencies": {
+    "fit-text": "^2.0.0"
+  },
+  "devDependencies": {
+    "jest": "^22.2.2"
+  },
+  "vudash": {
+    "component": "./src/client/markup.html"
+  }
+}
